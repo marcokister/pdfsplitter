@@ -27,7 +27,7 @@ class PDFSplitterApp:
 
         tk.Button(self.root, text="PDF aufteilen", command=self.run_split).grid(row=3, column=0, columnspan=3, pady=15)
 
-        tk.Label(self.root, text="(c) 2025 by Marco Kister | Version 1.0 | MIT License", font=("Arial", 6)).grid(row=4, column=0, columnspan=3, pady=5)
+        tk.Label(self.root, text="(c) 2025 by Marco Kister | Version 1.0 | MIT License", font=("Arial", 7)).grid(row=4, column=0, columnspan=3, pady=5)
 
 
     def select_input_file(self):
