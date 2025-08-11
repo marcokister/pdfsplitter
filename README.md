@@ -6,6 +6,8 @@ PDFSplitter – Smart PDF Document Splitting
 PDFSplitter is a lightweight Python application that allows you to split multi-page PDF files into smaller, separate files based on a user-defined number of pages.
 It is particularly useful for processing scanned documents that contain multiple multi-page items (e.g., invoices, contracts, forms).
 
+On my Website https://kiscando.de/pdf-splitter-die-schlanke-software-um-pdf-dateien-schnell-aufzuteilen/ you will find more information and download link for windows exe file.
+
 🔧 Key Features
 Split PDF files into chunks of N pages (user-defined)
 
@@ -37,6 +39,8 @@ Click Split – done!
 
 PDFSplitter ist eine schlanke Python-Anwendung zum Aufteilen mehrseitiger PDF-Dateien in kleinere Einzeldateien – basierend auf einer vom Benutzer festgelegten Seitenanzahl.
 Besonders hilfreich ist das Tool beim Verarbeiten gescannter Dokumente mit mehreren Einzeldokumenten (z. B. Rechnungen, Verträge, Formulare).
+
+Auf meiner Homepage findest du mehr Infomationen https://kiscando.de/pdf-splitter-die-schlanke-software-um-pdf-dateien-schnell-aufzuteilen/ sowie Download Link der exe Datei für Windows.
 
 🔧 Funktionen
 Aufteilen von PDFs in Abschnitte mit N Seiten (frei wählbar)
