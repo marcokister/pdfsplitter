@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
+from tkinterdnd2 import DND_FILES, TkinterDnD
 from pdfsplitterlogic import PDFSplitter
 
 class PDFSplitterApp:
@@ -15,7 +16,12 @@ class PDFSplitterApp:
 
     def _build_gui(self):
         tk.Label(self.root, text="PDF-Datei auswählen:").grid(row=0, column=0, sticky="w", padx=10, pady=5)
-        tk.Entry(self.root, textvariable=self.input_file, width=50).grid(row=0, column=1, padx=5)
+        
+        entry = tk.Entry(self.root, textvariable=self.input_file, width=50)
+        entry.grid(row=0, column=1, padx=5)
+        entry.drop_target_register(DND_FILES)
+        entry.dnd_bind('<<Drop>>', self.drop_file)
+
         tk.Button(self.root, text="Durchsuchen", command=self.select_input_file).grid(row=0, column=2, padx=5)
 
         tk.Label(self.root, text="Zielordner:").grid(row=1, column=0, sticky="w", padx=10, pady=5)
@@ -29,6 +35,12 @@ class PDFSplitterApp:
 
         tk.Label(self.root, text="(c) 2025 by Marco Kister | Version 1.0 | MIT License", font=("Arial", 7)).grid(row=4, column=0, columnspan=3, pady=5)
 
+
+    def drop_file(self, event):
+        file_path = event.data
+        if file_path.startswith('{') and file_path.endswith('}'):
+            file_path = file_path[1:-1]
+        self.input_file.set(file_path)
 
     def select_input_file(self):
         filename = filedialog.askopenfilename(filetypes=[("PDF Dateien", "*.pdf")])
@@ -61,6 +73,6 @@ class PDFSplitterApp:
             messagebox.showerror("Fehler beim Aufteilen", str(e))
 
 if __name__ == "__main__":
-    root = tk.Tk()
+    root = TkinterDnD.Tk()
     app = PDFSplitterApp(root)
     root.mainloop()
