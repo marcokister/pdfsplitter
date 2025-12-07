@@ -70,6 +70,7 @@ Auf Split klicken – fertig!
 
 # Create exe file
 pyinstaller --onefile --windowed pdfsplitter.py
+
 ![Static Badge](https://img.shields.io/badge/marcokister.de-dev-orange)
 
 
