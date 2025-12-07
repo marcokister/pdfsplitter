@@ -2,8 +2,6 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from pdfsplitterlogic import PDFSplitter
 
-# test branch
-
 class PDFSplitterApp:
     def __init__(self, root):
         self.root = root
