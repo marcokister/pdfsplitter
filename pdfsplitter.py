@@ -14,6 +14,24 @@ class PDFSplitterApp:
 
         self._build_gui()
 
+    def increment_pages_per_split(self):
+        current_value = self.pages_per_split.get()
+        try:
+            new_value = int(current_value) + 1
+            self.pages_per_split.set(new_value)
+        except ValueError:
+            self.pages_per_split.set(1)
+
+    def decrement_pages_per_split(self):
+        current_value = self.pages_per_split.get()
+        try:
+            new_value = int(current_value) - 1
+            if new_value < 1:
+                new_value = 1
+            self.pages_per_split.set(new_value)
+        except ValueError:
+            self.pages_per_split.set(1)
+
     def _build_gui(self):
         tk.Label(self.root, text="PDF-Datei auswählen:").grid(row=0, column=0, sticky="w", padx=10, pady=5)
         
@@ -29,7 +47,14 @@ class PDFSplitterApp:
         tk.Button(self.root, text="Durchsuchen", command=self.select_output_dir).grid(row=1, column=2, padx=5)
 
         tk.Label(self.root, text="Seiten pro Datei:").grid(row=2, column=0, sticky="w", padx=10, pady=5)
-        tk.Entry(self.root, textvariable=self.pages_per_split, width=10).grid(row=2, column=1, sticky="w", padx=5)
+        
+        # Frame for pages_per_split entry and buttons
+        pages_frame = tk.Frame(self.root)
+        pages_frame.grid(row=2, column=1, sticky="w", padx=5)
+
+        tk.Entry(pages_frame, textvariable=self.pages_per_split, width=10).pack(side=tk.LEFT)
+        tk.Button(pages_frame, text="+", command=self.increment_pages_per_split, width=3).pack(side=tk.LEFT, padx=(5,0))
+        tk.Button(pages_frame, text="-", command=self.decrement_pages_per_split, width=3).pack(side=tk.LEFT)
 
         tk.Button(self.root, text="PDF aufteilen", command=self.run_split).grid(row=3, column=0, columnspan=3, pady=15)
 
