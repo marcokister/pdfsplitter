@@ -33,14 +33,14 @@ class PDFSplitterApp:
             self.pages_per_split.set(1)
 
     def _build_gui(self):
-        tk.Label(self.root, text="PDF-Datei auswählen:").grid(row=0, column=0, sticky="w", padx=10, pady=5)
+        tk.Label(self.root, text="PDF-Datei auswählen:").grid(row=0, column=0, sticky="w", padx=10, pady=(25, 5))
         
         entry = tk.Entry(self.root, textvariable=self.input_file, width=50)
-        entry.grid(row=0, column=1, padx=5)
+        entry.grid(row=0, column=1, padx=5, pady=(25, 5))
         entry.drop_target_register(DND_FILES)
         entry.dnd_bind('<<Drop>>', self.drop_file)
 
-        tk.Button(self.root, text="Durchsuchen", command=self.select_input_file).grid(row=0, column=2, padx=5)
+        tk.Button(self.root, text="Durchsuchen", command=self.select_input_file).grid(row=0, column=2, padx=5, pady=(25, 5))
 
         tk.Label(self.root, text="Zielordner:").grid(row=1, column=0, sticky="w", padx=10, pady=5)
         tk.Entry(self.root, textvariable=self.output_dir, width=50).grid(row=1, column=1, padx=5)
@@ -58,7 +58,7 @@ class PDFSplitterApp:
 
         tk.Button(self.root, text="PDF aufteilen", command=self.run_split).grid(row=3, column=0, columnspan=3, pady=15)
 
-        tk.Label(self.root, text="(c) 2025 by Marco Kister | Version 1.0 | MIT License", font=("Arial", 7)).grid(row=4, column=0, columnspan=3, pady=5)
+        tk.Label(self.root, text="(c) 2025 by Marco Kister | Version 1.2 | MIT License", font=("Arial", 7)).grid(row=4, column=0, pady=5, padx=10)
 
 
     def drop_file(self, event):
