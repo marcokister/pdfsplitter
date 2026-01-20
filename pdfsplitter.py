@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinterdnd2 import DND_FILES, TkinterDnD
 from pdfsplitterlogic import PDFSplitter
+import os
+import platform
+from pathlib import Path
 
 class PDFSplitterApp:
     def __init__(self, root):
@@ -12,6 +15,7 @@ class PDFSplitterApp:
         self.output_dir = tk.StringVar()
         self.pages_per_split = tk.IntVar(value=2)
 
+        self._load_last_output_dir()
         self._build_gui()
 
     def increment_pages_per_split(self):
@@ -76,6 +80,41 @@ class PDFSplitterApp:
         folder = filedialog.askdirectory()
         if folder:
             self.output_dir.set(folder)
+            self._save_last_output_dir(folder)
+
+    def _get_config_path(self):
+        if platform.system() == "Windows":
+            return Path("c:/temp/pdfsplitter.txt")
+        else:
+            return Path.home() / "pdfsplitter.txt"
+
+    def _load_last_output_dir(self):
+        config_path = self._get_config_path()
+        if config_path.exists():
+            try:
+                with open(config_path, "r") as f:
+                    saved_path = f.read().strip()
+                
+                if saved_path and os.path.isdir(saved_path):
+                    self.output_dir.set(saved_path)
+                else:
+                    # Path doesn't exist anymore, clear entry and file
+                    self.output_dir.set("")
+                    self._save_last_output_dir("") 
+            except Exception:
+                pass # Fail silently if reading fails
+
+    def _save_last_output_dir(self, path):
+        config_path = self._get_config_path()
+        try:
+            # Ensure parent directory exists for Windows c:\temp
+            if platform.system() == "Windows":
+                config_path.parent.mkdir(parents=True, exist_ok=True)
+                
+            with open(config_path, "w") as f:
+                f.write(path)
+        except Exception:
+            pass # Fail silently if writing fails
 
     def run_split(self):
         input_file = self.input_file.get()
