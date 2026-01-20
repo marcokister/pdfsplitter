@@ -25,13 +25,10 @@ Scan everything into a single PDF.
 Use PDFSplitter to divide it into 50 PDFs, each with 2 pages.
 
 🚀 How It Works
-Select the input PDF file or drop the file into the input file entry.
-
-Set the number of pages per split.
-
-Choose the output directory.
-
-Click Split – done!
+- Select the input PDF file or drop the file into the input file entry.
+- Choose the output directory. Output folder is remembered for future.
+- Set the number of pages per split.
+- Click Split – done!
 
 -------------------------------------------------------------------------
 
@@ -60,13 +57,10 @@ Mit PDFSplitter automatisch in 50 Zwei-Seiten-PDFs aufteilen.
 
 🚀 So funktioniert’s
 
-Eingabe-PDF auswählen über Durchsuchen oder per Drop die PDF Datei auf das Eingabefeld ziehen
-
-Anzahl Seiten pro Teil angeben
-
-Ausgabeverzeichnis wählen
-
-Auf Split klicken – fertig!
+- Eingabe-PDF auswählen über Durchsuchen oder per Drop die PDF Datei auf das Eingabefeld ziehen
+- Ausgabeverzeichnis wählen. Verzeichnis wird gespeichert und bis zur Änderung immer angeboten.
+- Anzahl nach wieviel Seiten die Gesamt-PDF gesplittet werden soll.
+- Auf Split klicken – fertig!
 
 
 # Create exe file
